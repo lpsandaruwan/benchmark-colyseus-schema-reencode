@@ -1,0 +1,21 @@
+lib
+package-lock.json
+
+# Tests
+coverage/
+
+# Mac
+.DS_Store
+.vscode/
+
+# Node.js
+node_modules
+*.log
+
+decoders/cpp/usage*
+!decoders/cpp/usage*.*
+
+# Colyseus.Schema (C# decoder)
+decoders/csharp/Colyseus.Schema/bin/
+decoders/csharp/Colyseus.Schema/obj/
+decoders/csharp/Colyseus.Schema/.vs/
