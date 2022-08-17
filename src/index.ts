@@ -8,25 +8,29 @@ const NUMBER_OF_MAP_ELEMENTS = [100, 1000, 2000, 5000];
 
 // ---------------- Intialize states -------------------------
 class PlayerFromOrigin extends SchemaOrigin.Schema {
-  @SchemaOrigin.type("string")
-  userId = "missing";
+  @SchemaOrigin.type("number")
+  userId = 0;
 }
 
 class StateFromOrigin extends SchemaOrigin.Schema {
-  @SchemaOrigin.type({ map: PlayerFromOrigin })
-  players = new SchemaOrigin.MapSchema<PlayerFromOrigin>();
+  // @SchemaOrigin.type({ map: PlayerFromOrigin })
+  // players = new SchemaOrigin.MapSchema<PlayerFromOrigin>();
+  @SchemaOrigin.type("number")
+  userId = 0;
 }
 
 let stateFromOrigin = new StateFromOrigin();
 
 class PlayerFromModified extends SchemaModified.Schema {
-  @SchemaModified.type("string")
-  userId = "missing";
+  @SchemaModified.type("number")
+  userId = 0;
 }
 
 class StateFromModified extends SchemaModified.Schema {
-  @SchemaModified.type({ map: PlayerFromModified })
-  players = new SchemaModified.MapSchema<PlayerFromModified>();
+  // @SchemaModified.type({ map: PlayerFromModified })
+  // players = new SchemaModified.MapSchema<PlayerFromModified>();
+  @SchemaModified.type("number")
+  userId = 0;
 }
 
 let stateFromModified = new StateFromModified();
@@ -41,15 +45,15 @@ for (const numberOfElements of NUMBER_OF_MAP_ELEMENTS) {
   
   console.log(`\nPreparing states with ${numberOfElements} elements: IN PROGRESS`);
   while (index < numberOfElements) {
-    const key = index.toString();
+    //const key = index.toString();
 
     const playerFromOrigin = new PlayerFromOrigin();
-    playerFromOrigin.userId = key;
-    stateFromOrigin.players.set(key, playerFromOrigin);
+    playerFromOrigin.userId = index;
+    //stateFromOrigin.players.set(key, playerFromOrigin);
 
     const playerFromModified = new PlayerFromModified();
-    playerFromModified.userId = key;
-    stateFromModified.players.set(key, playerFromModified);
+    playerFromModified.userId = index;
+    //stateFromModified.players.set(key, playerFromModified);
 
     index++;
   }
